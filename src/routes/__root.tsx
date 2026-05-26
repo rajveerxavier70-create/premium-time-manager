@@ -72,14 +72,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "Kairos" },
+      { name: "description", content: "Kairos is a task management system for organizing and tracking your tasks with reminders and timers." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "Kairos" },
+      { property: "og:description", content: "Kairos is a task management system for organizing and tracking your tasks with reminders and timers." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Kairos" },
+      { name: "twitter:description", content: "Kairos is a task management system for organizing and tracking your tasks with reminders and timers." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f7978bde-ba06-4308-9b59-619d47ed9e45/id-preview-f76a907c--79561b11-4045-4060-89a5-7a486afd9453.lovable.app-1779779297134.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f7978bde-ba06-4308-9b59-619d47ed9e45/id-preview-f76a907c--79561b11-4045-4060-89a5-7a486afd9453.lovable.app-1779779297134.png" },
     ],
     links: [
       {
