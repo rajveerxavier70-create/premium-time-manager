@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kairos — Premium Task Management</title>
+<meta name="description" content="Kairos: a premium task management system with reminders, countdowns, and alarms." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/app.css" />
+</head>
+<body>
+  <div class="bg-grain"></div>
+
+  <!-- ===== AUTH SCREEN ===== -->
+  <section id="auth-screen" class="auth-screen">
+    <div class="auth-card">
+      <div class="brand">
+        <div class="brand-mark">K</div>
+        <h1 class="brand-name">Kairos</h1>
+        <p class="brand-tag">The opportune moment, mastered.</p>
+      </div>
+
+      <div class="tabs">
+        <button class="tab active" data-tab="login">Sign In</button>
+        <button class="tab" data-tab="register">Create Account</button>
+      </div>
+
+      <form id="login-form" class="auth-form active">
+        <label>Email
+          <input type="email" name="email" required autocomplete="email" />
+        </label>
+        <label>Password
+          <input type="password" name="password" required autocomplete="current-password" />
+        </label>
+        <button type="submit" class="btn-gold">Sign In</button>
+        <p class="auth-msg" id="login-msg"></p>
+      </form>
+
+      <form id="register-form" class="auth-form">
+        <label>Full Name
+          <input type="text" name="name" required />
+        </label>
+        <label>Email
+          <input type="email" name="email" required autocomplete="email" />
+        </label>
+        <label>Password
+          <input type="password" name="password" required minlength="6" autocomplete="new-password" />
+        </label>
+        <button type="submit" class="btn-gold">Create Account</button>
+        <p class="auth-msg" id="register-msg"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== APP ===== -->
+  <section id="app-screen" class="app-screen hidden">
+    <header class="topbar">
+      <div class="brand-row">
+        <div class="brand-mark sm">K</div>
+        <div>
+          <h1 class="brand-name sm">Kairos</h1>
+          <p class="hello" id="hello">Welcome</p>
+        </div>
+      </div>
+      <button id="logout-btn" class="btn-ghost">Logout</button>
+    </header>
+
+    <main class="container">
+      <!-- Create / Edit Task -->
+      <div class="panel">
+        <h2 class="panel-title" id="form-title">Create a Task</h2>
+        <form id="task-form" class="task-form">
+          <input type="hidden" name="id" />
+          <label>Title
+            <input type="text" name="title" required placeholder="e.g. Finalize project proposal" />
+          </label>
+          <label>Description
+            <textarea name="description" rows="2" placeholder="Optional details..."></textarea>
+          </label>
+          <div class="grid-2">
+            <label>Deadline
+              <input type="datetime-local" name="deadline" required />
+            </label>
+            <label>Priority
+              <select name="priority">
+                <option value="low">Low</option>
+                <option value="medium" selected>Medium</option>
+                <option value="high">High</option>
+              </select>
+            </label>
+          </div>
+          <label class="reminder-row">
+            <input type="checkbox" name="reminder" checked />
+            <span>Send email reminder 30 min before deadline</span>
+          </label>
+          <div class="form-actions">
+            <button type="submit" class="btn-gold" id="task-submit">Add Task</button>
+            <button type="button" class="btn-ghost hidden" id="cancel-edit">Cancel</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Task List -->
+      <div class="panel">
+        <div class="panel-head">
+          <h2 class="panel-title">Your Tasks</h2>
+          <div class="filters">
+            <button class="chip active" data-filter="all">All</button>
+            <button class="chip" data-filter="active">Active</button>
+            <button class="chip" data-filter="done">Done</button>
+          </div>
+        </div>
+        <ul id="task-list" class="task-list"></ul>
+        <p id="empty-state" class="empty-state">No tasks yet. Create your first one above.</p>
+      </div>
+    </main>
+  </section>
+
+  <!-- Alarm Modal -->
+  <div id="alarm-modal" class="modal hidden">
+    <div class="modal-card">
+      <div class="bell">⏰</div>
+      <h2>Time's up</h2>
+      <p id="alarm-task" class="alarm-task"></p>
+      <button id="alarm-dismiss" class="btn-gold">Dismiss</button>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Alarm sound (data URI: short beep loop generated in JS via WebAudio) -->
+  <script src="/app.js"></script>
+</body>
+</html>
